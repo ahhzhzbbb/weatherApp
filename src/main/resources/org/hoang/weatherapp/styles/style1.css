@@ -1,0 +1,51 @@
+
+.rounded-pane {
+    -fx-background-color:  #232632;   /* màu nền */
+    -fx-background-radius: 30;       /* bo góc */
+    -fx-border-radius: 30;           /* nếu có border */
+    -fx-border-color: black;         /* viền (nếu muốn) */
+}
+
+
+/* Nút đẹp */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #1abc9c, #16a085);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15; /* bo tròn nút */
+    -fx-cursor: hand;          /* đổi con trỏ chuột */
+    -fx-padding: 8 16 8 16;    /* padding: top right bottom left */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #16a085, #1abc9c);
+}
+
+.button:pressed {
+    -fx-background-color: #149174;
+}
+
+.image-hover {
+    -fx-cursor: hand;             /* đổi thành bàn tay khi hover */
+}
+
+.pane-hover {
+    -fx-background-radius: 10;       /* bo góc */
+    -fx-border-radius: 10;           /* nếu có border */
+    -fx-border-color: black;
+    -fx-background-color:  #232632;
+}
+
+.pane-hover Text{
+    -fx-fill: #ffffff;
+}
+
+.pane-hover:hover {
+    -fx-background-color: #ffffff;
+}
+
+.pane-hover:hover Text {
+    -fx-fill: #000000;
+}
