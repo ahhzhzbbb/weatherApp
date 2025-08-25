@@ -15,6 +15,7 @@ public class WeatherApplication extends Application {
         scene.getStylesheets().add(getClass().getResource("/org/hoang/weatherapp/styles/style1.css").toExternalForm());
         stage.setTitle("WeatherApp");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 }

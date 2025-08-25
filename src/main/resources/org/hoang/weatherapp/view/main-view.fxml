@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -23,19 +24,29 @@
                         <Rectangle2D height="585.0" minX="300.0" width="487.5" />
                      </viewport>
                   </ImageView>
-                  <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday">
+                  <Text layoutX="22.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
                   </Text>
-                  <Text layoutX="14.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11 Nov 2023">
+                  <Text layoutX="22.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11 Nov 2023">
                      <font>
                         <Font name="System Italic" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="229.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ninh Binh">
+                  <Text fx:id="cityText" layoutX="197.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ninh Binh">
                      <font>
                         <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="tempOnpane" fill="#d7c7c7" fontSmoothingType="LCD" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="29ºC" textAlignment="CENTER" wrappingWidth="206.1030044555664">
+                     <font>
+                        <Font name="System Bold" size="70.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="34.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sunny" wrappingWidth="171.22000122070312">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
                </children>
@@ -45,7 +56,7 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="671.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A">
+            <Text fx:id="precipitation" fill="WHITE" layoutX="642.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="70.0">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>
@@ -55,7 +66,7 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="671.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A">
+            <Text fx:id="humidity" fill="WHITE" layoutX="642.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="70.0">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>
@@ -65,35 +76,35 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="671.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A">
+            <Text fx:id="wind" fill="WHITE" layoutX="643.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N/A" wrappingWidth="68.96399688720703">
                <font>
                   <Font name="System Italic" size="15.0" />
                </font>
             </Text>
-            <Pane fx:id="pane1" layoutX="397.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
+            <Pane fx:id="pane1" layoutX="397.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
-                  <Text layoutX="22.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
+                  <Text layoutX="3.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
-            <Pane fx:id="pane2" layoutX="488.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
+            <Pane fx:id="pane2" layoutX="488.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
-                  <Text layoutX="19.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
+                  <Text layoutX="3.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
-            <Pane fx:id="pane3" layoutX="579.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
+            <Pane fx:id="pane3" layoutX="579.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
-                  <Text layoutX="19.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
+                  <Text layoutX="3.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
-            <Pane fx:id="pane4" layoutX="666.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
+            <Pane fx:id="pane4" layoutX="666.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
-                  <Text layoutX="19.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
+                  <Text layoutX="3.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
-            <Button fx:id="locationButton" layoutX="464.0" layoutY="332.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="203.0" text="Chọn vị trí của bạn!!!">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font></Button>
+            <TextField fx:id="cityTextField" layoutX="463.0" layoutY="324.0" onAction="#weatherSceneController" prefHeight="33.0" prefWidth="191.0" promptText="Nhập tên thành phố của bạn ">
+               <contextMenu>
+                  <ContextMenu fx:id="suggestSearchMenu" />
+               </contextMenu></TextField>
          </children>
       </Pane>
    </children>
