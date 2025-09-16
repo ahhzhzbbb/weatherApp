@@ -3,11 +3,11 @@ package org.hoang.controllers;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -51,13 +51,16 @@ public class mainViewController {
     @FXML
     private Text tempOnpane;
 
+    @FXML
+    private ImageView iconPane1;
+
     //ky thuat Debounce giam tan suat goi API, giam giat lag -> dung trong suggestSearch cho do goi nhieu
     private final PauseTransition pause = new PauseTransition(Duration.millis(600));
 
     private List<ForecastItem> weathers;
 
     @FXML   // thêm annotation này để rõ ràng hơn
-    public void initialize() {
+    public void initialize() throws IOException, InterruptedException {
         Rectangle clip = new Rectangle(375, 450);
         clip.setArcWidth(50);
         clip.setArcHeight(50);
@@ -80,13 +83,16 @@ public class mainViewController {
             });
             pause.playFromStart(); // reset timer mỗi lần gõ
         });
+
+        weatherSceneController();
     }
 
     @FXML
     public void weatherSceneController() throws IOException, InterruptedException {
         pane.requestFocus();
         WeatherAPI api = new WeatherAPI();
-        String weatherJson = api.callAPI(cityTextField.getText());
+        String nameOfCity = (cityTextField.getText() != "") ? cityTextField.getText() : "Hanoi, VN";
+        String weatherJson = api.callAPI(nameOfCity);
         ObjectMapper mapper = new ObjectMapper();
         ForecastResponse response = mapper.readValue(weatherJson, ForecastResponse.class);
         weathers = response.list;
@@ -102,11 +108,16 @@ public class mainViewController {
 
         for(int i = 0; i <= 24; i += 8)
         {
-            Node node = panes.get(i / 8).getChildren().get(0);
+            ImageView iconView = (ImageView) panes.get(i / 8).getChildren().get(0);
+            Text tempText = (Text) panes.get(i / 8).getChildren().get(1);
 
-            if (node instanceof Text textNode) {
-                textNode.setText(weathers.get(i).main.temp + " ºC"); // đổi nội dung
-            }
+            iconView.setImage(
+                    new Image("http://openweathermap.org/img/wn/"
+                            + weathers.get(i).weather.get(0).icon
+                            + "@2x.png")
+                    );
+
+            tempText.setText(weathers.get(i).main.temp + " ºC");
         }
 
         cityText.setText(city.name + ", " + city.country);
@@ -136,6 +147,7 @@ public class mainViewController {
         precipitation.setText(rainText + " mm");
         humidity.setText(thisWeather.main.humidity + " %");
         wind.setText(thisWeather.wind.speed + " m/s");
+        tempOnpane.setText((int)thisWeather.main.temp + " ºC");
     }
 
 
@@ -148,7 +160,6 @@ public class mainViewController {
     public void nameSuggest() throws IOException, InterruptedException {
         String input = getCityTextNow().trim();
 
-        // Nếu input rỗng thì clear menu + return luôn
         if (input.isEmpty()) {
             suggestSearchMenu.hide();
             return;

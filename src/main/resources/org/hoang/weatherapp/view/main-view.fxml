@@ -24,12 +24,12 @@
                         <Rectangle2D height="585.0" minX="300.0" width="487.5" />
                      </viewport>
                   </ImageView>
-                  <Text layoutX="22.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday">
+                  <Text fx:id="dayInWeek" layoutX="22.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
                   </Text>
-                  <Text layoutX="22.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11 Nov 2023">
+                  <Text fx:id="dateOnPane" layoutX="22.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11 Nov 2023">
                      <font>
                         <Font name="System Italic" size="18.0" />
                      </font>
@@ -83,21 +83,25 @@
             </Text>
             <Pane fx:id="pane1" layoutX="397.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
+                  <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="10.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
                   <Text layoutX="3.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
             <Pane fx:id="pane2" layoutX="488.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
+                  <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="10.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
                   <Text layoutX="3.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
             <Pane fx:id="pane3" layoutX="579.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
+                  <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="10.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
                   <Text layoutX="3.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
             <Pane fx:id="pane4" layoutX="666.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#forecastPaneController" prefHeight="170.0" prefWidth="70.0" styleClass="pane-hover">
                <children>
+                  <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="10.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
                   <Text layoutX="3.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
                </children>
             </Pane>
